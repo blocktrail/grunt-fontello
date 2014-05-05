@@ -97,8 +97,13 @@ var createSession = function(options, callback){
 **/
 var fetchStream = function(options, session, callback){
 
+  var zipurl = options.host + '/' + session + '/get';
+  
   grunt.log.write('Fetching archive...');
-  var request = needle.get(options.host + '/' + session + '/get', function(err){
+  grunt.verbose.writeln(''); // write whiteline for verbose for nice output
+  grunt.verbose.writeln(zipurl);
+  
+  var request = needle.get(zipurl, function(err){
     if(err){
       grunt.log.err();
       callback(err);
